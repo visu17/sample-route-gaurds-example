@@ -1,0 +1,58 @@
+<h3 class="d-flex justify-content-center"><label>Sign Up</label></h3>
+<section>
+    <div class="container d-flex justify-content-center mt-2">
+        <form class="table-bordered p-3 m-3">
+            <div class="form-row col-md-9 mb-3 mt-2">
+            <div class="form-row col-md-5 ft mr-5">
+                <label class="mr-2">First Name </label>
+                <input type="text" name="firstname" placeholder="First Name" class="form-control" [(ngModel)]="registration.firstname">
+                <span class="text-danger" *ngIf="isFormSubmitted && registration.firstname == ''"><small>First Name is required</small></span>
+                <!-- <span class="text-danger"  pattern= "/^(?.*[a-z]{3})[a-z0-9]+$/i" *ngIf="registration.firstname == ''">Min 3 Charaters required</span> -->
+            </div>
+            <div class="form-row col-md-5 ft">
+                <label class="mr-2">Last Name</label>
+                <input type="text" name="lastname" placeholder="Last Name" class="form-control" [(ngModel)]="registration.lastname">
+                <span class="text-danger" *ngIf="isFormSubmitted && registration.lastname == ''"><small>Last Name is required</small></span>
+            </div>
+            </div>
+            <div class="form-group col-md-9">
+                <label><sup>*</sup> Full Name</label>
+                <input type="text" class="form-control" name="fullname" placeholder="User Name" [(ngModel)]="registration.fullname">
+                <span class="text-danger" *ngIf="isFormSubmitted && registration.fullname == ''"><small>Name is required</small></span>
+            </div>
+            <div class="form-group col-md-9">
+                <label><sup>*</sup> E-Mail</label>
+                <input type="email" class="form-control" name="mail" placeholder="Email" required [(ngModel)]="registration.email">
+                <span class="text-danger" *ngIf="isFormSubmitted && registration.email == ''">Email is required</span>
+                <div>
+                    <p *ngIf="isFormSubmitted && registration.email"><small>This is not a valid Email!!!</small>/p>
+                  </div>
+            </div>
+            <div class="form-group col-md-9">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="registration.password">
+                <span class="text-danger" *ngIf="isFormSubmitted && registration.password == ''"><sub>*</sub> password is required</span>
+            </div>
+            <div class="form-group col-md-9">
+                <label>Confirm Password</label>
+                <input type="password" class="form-control" name="confirmpassword" placeholder="Confirm Password" [(ngModel)]="confirmPassword">
+                <span class="text-danger" *ngIf="isFormSubmitted && !isConfirmPasswordMatch"><sub>*</sub> Confirm password is required</span><br>
+                <span class="text-danger" *ngIf="isFormSubmitted && !isConfirmPasswordMatch"><sub>*</sub> password must must</span>
+            </div>
+            <div class="form-group col-md-9">
+                <label>Phone No</label>
+                <input type="text" class="form-control" name="phone" placeholder="Phone" [(ngModel)]="registration.phone">
+                <span class="text-danger" *ngIf="isFormSubmitted && registration.phone == ''">phone number is required</span>
+            </div>
+            <div class="form-group col-md-9 mb-4">
+                <label>Address</label>
+                <input type="text" class="form-control" name="address" placeholder="Address" [(ngModel)]="registration.address">
+                <span class="text-danger" *ngIf="isFormSubmitted && registration.address == ''">Address is required</span>
+            </div>
+            <div class="form-group col-md-9">
+                <input type="button" class="btn btn-primary" (click)="register()" value="Register">
+                <input type="button" class="btn btn-danger ml-4" value="Cancel" (click)="cancel()" >
+            </div>
+        </form>
+    </div>
+</section>

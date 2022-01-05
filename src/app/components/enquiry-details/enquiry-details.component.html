@@ -1,0 +1,123 @@
+<div class="container mt-5 table-bordered p-4">
+    <label class="display-4 d-flex justify-content-center">Enquiry Form</label>
+    <form [formGroup]="enquiryForm">
+        <div class="form-group">
+            <label>User Name</label>
+            <input type="text" class="form-control" name="user" formControlName="userName">
+            <!-- <div class="text-danger"
+                *ngIf="enquiryForm.controls['userName'].touched && enquiryForm.controls['userName'].value ==''">
+                <small>User Name is required</small></div> -->
+            <div class="text-danger" *ngIf="enquiryForm.controls['userName'].errors">
+                <span *ngIf="enquiryForm.controls['userName'].errors['required']">
+                    <small>User Name is required</small>
+                </span>
+                <span *ngIf="enquiryForm.controls['userName'].errors['minlength']">
+                    <small>Mininum 3 charaters</small>
+                </span>
+                <span *ngIf="enquiryForm.controls['userName'].errors['maxlength']">
+                    <small>Maximum be 10 charaters</small>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" class="form-control" name="fullname" formControlName="fullName">
+            <!-- <div class="text-danger"
+                *ngIf="enquiryForm.controls['fullName'].touched && enquiryForm.controls['fullName'].value ==''">
+                <small>Full Name is required</small>
+            </div> -->
+            <div class="text-danger" *ngIf="enquiryForm.controls['fullName'].errors">
+                <span *ngIf="enquiryForm.controls['fullName'].errors['required']">
+                    <small>Full Name is required</small>
+                </span>
+                <span *ngIf="enquiryForm.controls['fullName'].errors['minlength']">
+                    <small>Mininum 3 charaters</small>
+                </span>
+                <span *ngIf="enquiryForm.controls['fullName'].errors['maxlength']">
+                    <small>Maximum be 15 charaters</small>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" name="email" formControlName="email">
+            <!-- <div class="text-danger"
+                *ngIf="enquiryForm.controls['email'].touched && enquiryForm.controls['email'].value ==''">
+                <small>Email is required</small>
+            </div> -->
+            <div class="text-danger" *ngIf="enquiryForm.controls['email'].errors">
+                <span *ngIf="enquiryForm.controls['email'].errors['email']">
+                    <small>Email address is invalid</small>
+                </span>
+                
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Phone</label>
+            <input type="text" class="form-control" name="phone" formControlName="phoneNumber">
+            <!-- <div class="text-danger"
+                *ngIf="enquiryForm.controls['phoneNumber'].touched && enquiryForm.controls['phoneNumber'].value ==''">
+                <small>phone number is required</small>
+            </div> -->
+            <div class="text-danger" *ngIf="enquiryForm.controls['phoneNumber'].errors">
+                <span *ngIf="enquiryForm.controls['phoneNumber'].errors['required']">
+                    <small>Phone number is required</small>
+                </span>
+                <span *ngIf="enquiryForm.controls['phoneNumber'].errors['pattern']">
+                    <small>Phone Number starts with 6,7,8,9</small>
+                </span>
+                <span *ngIf="enquiryForm.controls['phoneNumber'].errors['maxlength']">
+                    <small>Indian Phone number be 10 digits</small>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Address</label>
+            <input type="text" class="form-control" name="address" formControlName="address">
+            <!-- <div class="text-danger"
+                *ngIf="enquiryForm.controls['address'].touched && enquiryForm.controls['address'].value ==''">
+                <small>Address is required</small>
+            </div> -->
+            <div class="text-danger" *ngIf="enquiryForm.controls['address'].errors">
+                <span *ngIf="enquiryForm.controls['address'].errors['required']">
+                    <small>Address is required</small>
+                </span>
+                <!-- <span *ngIf="enquiryForm.controls['address'].errors['minlength']">
+                    <small>Min 5 Charaters</small>
+                </span> -->
+            </div>
+        </div>
+        <div>
+            <input type="button" [disabled]="enquiryForm.status == 'INVALID'"  class="btn btn-success mr-4" value="Submit" (click)="submitData()">
+            <!-- <input type="button" class="btn btn-warning mr-4" value="Update(SetValue)" (click)="updateSetData()">
+            <input type="button" class="btn btn-danger" value="Update(PatchValue)" (click)="updatePatchData()"> -->
+        </div>
+    </form>
+</div>
+
+<div class="mt-5" *ngIf="isRegister">
+    <table class="table table-bordered table-stripped w-75 offset-md-1"> 
+        <caption>Enqiry Table</caption>
+        <tr>
+        <th scope="col">User Name</th>
+        <th scope="col">Full Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Address</th>
+        <th scope="colgroup">Edit</th>
+        <th scope="colgroup">Update</th>
+      </tr>
+      <tbody>
+          <tr>
+              <td>{{enquiryForm.controls['userName'].value}}</td>
+              <td>{{enquiryForm.controls['fullName'].value}}</td>
+              <td>{{enquiryForm.controls['email'].value}}</td>
+              <td>{{enquiryForm.controls['phoneNumber'].value}}</td>
+              <td>{{enquiryForm.controls['address'].value}}</td>
+              <!-- <td><button class="btn btn-primary">Edit</button></td> -->
+              <td><input type="button" class="btn btn-warning mr-4" value="SetValue" (click)="updateSetData()"></td>
+            <td><input type="button" class="btn btn-danger" value="PatchValue" (click)="updatePatchData()"></td>
+         </tr>
+      </tbody>
+    </table>
+</div>

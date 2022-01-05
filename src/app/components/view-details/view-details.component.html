@@ -1,0 +1,36 @@
+<div class="fluid-container mt-5 ml-5 mr-5">
+    <table class="table table-bordered table-striped">
+        <caption></caption>
+        <thead>
+            <tr>
+                <th scope="col">S.NO</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Address</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr scope="col" *ngFor="let items of regUser">
+                <td>{{items.id}}</td>
+                <td>{{items.firstname}}</td>
+                <td>{{items.lastname}}</td>
+                <td>{{items.fullname}}</td>
+                <td>{{items.email}}</td>
+                <td>{{items.password}}</td>
+                <td>{{items.address}}</td>
+                <td>
+                    <input type="button" class="btn btn-success mr-5" data-toggle="modal" (click)="getUsedId(items.id)" data-target="#editDetails" value="Edit">
+                </td>
+                <td>
+                  <input type="button" class="btn btn-danger ml-3" data-toggle="modal" data-target="#deleteDetails" value="Delete">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<app-edit-registration [userId]="userEditId" (dataUpadatedFlag)="dataUpadated($event)"></app-edit-registration>
